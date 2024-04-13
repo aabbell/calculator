@@ -1,7 +1,9 @@
 
 const one = document.querySelector(".one");
+let value = 0
 one.addEventListener('click',function(){
-   
+   value = 1
+   console.log(value)
 })
 
 function add( x , y) {
