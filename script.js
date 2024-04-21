@@ -1,43 +1,85 @@
+// this is for the DOM selelctors 
+let numbers= document.querySelectorAll(".number")
+let operators = document.querySelectorAll(".operator")
+let currentOperand = document.querySelector('.current-operand')
+let equal = document.querySelector('.equal')
+let clear = document.querySelector('.clear')
 
-const one = document.querySelector(".one");
-let value = 0
-one.addEventListener('click',function(){
-   value = 1
-   console.log(value)
+//this are some variables needed
+let first = ''
+let store = ''
+let clickedOperator = ''
+let result = ''
+
+
+//this is for the first number that is being stored
+currentOperand.textContent = 0
+numbers.forEach((number)=> {
+    number.addEventListener('click', function(){
+        store += number.textContent
+        currentOperand.textContent = store
+    })
 })
 
-function add( x , y) {
-    x = 5
-    y = 3
+//this is for the operators the are being clicked
+operators.forEach((operator) =>{
+    operator.addEventListener('click' ,function(){
+        first = store
+        store = ''
+        currentOperand.textContent = 0
+        clickedOperator = operator.textContent
+    })
+})
+//this is for the equal sign that gives us the answer
+equal.addEventListener('click', function(){
+    result = operate(parseFloat(first),parseFloat(store),clickedOperator)
+    currentOperand.textContent = result
+    store = result
+})
+//this is to clear all the input that has been entered
+clear.addEventListener('click',function(){
+    currentOperand.textContent = 0
+    first = 0
+    store = 0
+})
+
+//this is for  the operation 
+function add(x,y) {
     let result = x + y
     return result
 }
-
-
-function subtract (){
-    let x = 0
-    let y = 0
-    let result = x + y
+function subtract (x,y){
+    let result = x - y
     return result
 }
-
-function multiply (){
-    let x = 0
-    let y = 0
+function multiply (x,y){
     let result = x * y
     return result
 }
-
-function divide(){
-    let x = 0
-    let y = 0
+function divide(x,y){
     let result = x / y
     return result 
 }
 
-function operate () {
-    add ()
-    subtract()
-    multiply()
-    divide()
+
+//this is for the calclulation finishs
+function operate (first,second,opp) {
+   /* let first = Number(promt("what is the first number"))
+    *let opp = promt("what is the operator")
+    *let second = Number(promt("what is the second number"))
+    */
+    switch(opp){
+        case '+':
+            return(add(first,second))
+            break;
+        case '-':
+            return(subtract(first,second))
+            break;
+        case '*':
+            return(multiply(first,second))
+            break;
+        case '/':
+            return(divide(first,second))
+            break;
+    }
 }

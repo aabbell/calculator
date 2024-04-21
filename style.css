@@ -1,20 +1,49 @@
-.body{
+.container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
+    background-color: aquamarine;
 }
-.container{
+.current-operand{
+    background-color:darkgrey;
+    border-radius: 5px;
+    color: aliceblue;
+    width: 340px;
+    height: 30px;
+    font-size: 25px;
+    text-align: end;
+}
+
+.number,
+.operator,
+.clear,
+.equal{
+    padding:15px;
+    width: 60px;
+    border-radius: 40px;
+    border: 0px;
+    background-color: lightgrey;
+}
+.operators,
+.numbers{
     display: flex;
-    gap: 6px;
-    height: 400px;
-    width: 400px;
     flex-wrap: wrap;
-
+    gap: 5px;
 }
-.number{
-    padding: 50px;
-    border: 1px solid black;
-    border-radius: 10px;
+
+
+.body{
+    display: flex;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    padding: 20px;
+    height: 400px;
+    width: 300px;
+}
+
+.zero{
+    width:130px;
 }
