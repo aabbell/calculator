@@ -32,15 +32,22 @@ operators.forEach((operator) =>{
 })
 //this is for the equal sign that gives us the answer
 equal.addEventListener('click', function(){
+    if (clickedOperator === '/' && store === 0){
+        result = "Error"
+    }
+    else{
     result = operate(parseFloat(first),parseFloat(store),clickedOperator)
+    result = Math.round(result)
     currentOperand.textContent = result
     store = result
+    }
 })
+console.log(result)
 //this is to clear all the input that has been entered
 clear.addEventListener('click',function(){
-    currentOperand.textContent = 0
-    first = 0
-    store = 0
+    currentOperand.textContent = ''
+    first = ''
+    store = ''
 })
 
 //this is for  the operation 
@@ -81,5 +88,8 @@ function operate (first,second,opp) {
         case '/':
             return(divide(first,second))
             break;
+        
     }
-}
+
+    }
+// commit
